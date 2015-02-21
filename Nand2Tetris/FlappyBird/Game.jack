@@ -1,0 +1,142 @@
+class Game{
+    field Bird bird;
+    field Pipe pipe;
+    field int ceiling, floor;
+    field int score;
+    field boolean gameOver;
+
+    constructor Game new() {
+        let ceiling = 20;
+        let floor = 235;
+
+        do Pipe.initializeGaps();
+
+        return this;
+    }
+
+    method void dispose(){
+        do bird.dispose();
+        do pipe.dispose();
+        do Pipe.disposeGaps();
+        do Memory.deAlloc(this);
+        return
+    }
+
+    method void reset() {
+        do Screen.clearScreen();
+
+        let bird = Bird.new(512/4, floor/2);
+        let pipe = Pipe.new();
+
+        let score = 0;
+        let gameOver = false;
+
+        return;
+
+    }
+
+    method void run() {
+        while(true) {
+            do reset();
+
+            while(-gameOver) {
+                do updateVelocity();
+                do Screen.setColor(false);
+
+                if(bird.isVisible()){
+                    do bird.draw();
+                }
+
+            do pipe.erase();
+            do Screen.setColor(true);
+
+            do bird.updateAltitude();
+            do pipe.shift(bird.getSpeed());
+
+            if(pipe.collidesWith(bird)){
+                let gameOver = true;
+            } else {
+                if(-bird.higherThan(floor)){
+                    let gameOver = true;
+                    do bird.placeOn(floor);
+                }
+            }
+
+            if(pipe.wasJustPassedBy(bird)){
+                let score = score+1;
+            }
+            if(bird.isVisible()){
+                do bird.draw();
+            }
+
+            if(-pipe.isVisible()){
+                do pipe.reset();
+            }
+
+            do pipe.draw();
+            do drawCeiling();
+            do drawFloor();
+            do drawScore();
+
+            do Sys.wait(100);
+            }
+
+            do displayGameOverMessage();
+            do waitForKeyPress();
+        }
+        return;
+    }
+
+    method void updateVelocity(){
+        var char keyPressed;
+        let keyPressed = Keyboard.keyPressed();
+
+        if(keyPressed > 0){
+            do bird.flap();
+        } else {
+            do bird.fall();
+        }
+        return;
+    }
+
+    method drawCeiling(){
+        do Screen.drawRectangle(0, 0, 511, ceiling);
+        return;
+    }
+
+    method drawFloor(){
+        do Screen.drawRectangle(0, floor, 511, 255);
+        return;
+    }
+
+    method void drawScore(){
+        var String scoreString;
+        let scoreString = String.new(3);
+
+        do scoreString.setInt(score);
+        do Output.moveCursor(0,0);
+        do Output.printString(scoreString);
+        return;
+    }
+
+    method void displayGameOverMessage(){
+        var String scoreString;
+        do Output.moveCursor(10,27);
+        do Output.printString("GAME OVER");
+        do Output.moveCursor(11,30);
+        let scoreString = string.new(3);
+        do scoreString.setInt(score);
+        do Output.printString(scoreString);
+        return;
+    }
+
+    method void waitForKeyPress(){
+        var char keyPressed;
+        let keyPressed = 0;
+
+        while(keyPressed = 0){
+            let keyPressed = Keyboard.keyPressed();
+        }
+        return;
+    }
+}

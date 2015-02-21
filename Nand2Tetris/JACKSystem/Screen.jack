@@ -1,0 +1,214 @@
+
+/**
+ * Graphic screen library.
+ */
+class Screen {
+	
+	static Array screen;
+	static boolean color;
+
+    /** Initializes the Screen. */
+    function void init() {
+		do Screen.clearScreen();
+		let color = true;
+		
+		return;
+    }
+
+    /** Erases the whole screen. */
+    function void clearScreen() {
+		var int i;
+		let i = 0;
+		let screen = 16384;
+		
+		//Because screen map is 8k
+		while(i < 8192) {
+			let screen[i] = 0;
+			let i = i + 1;
+		}
+
+		return;
+    }
+
+    /** Sets the color to be used in further draw commands
+     *  where white = false, black = true. */
+    function void setColor(boolean b) {
+		let color = b;
+
+		return;
+    }
+
+    /** Draws the (x, y) pixel. */
+    function void drawPixel(int x, int y) {
+        var int location;
+        var int mask;
+
+        let location = (y*32) + (x/16);
+        let mask = x - ((x/16) * 16);
+
+        if( color ) {
+            let screen[location] = screen[location] | mask;
+        } else {
+            let screen[location] = screen[location] & ~mask;
+        }
+
+        return;
+    }
+
+    /** Draws a line from (x1, y1) to (x2, y2). */
+    function void drawLine(int x1, int y1, int x2, int y2) {
+		var int dx, dy, adyMinusbdx, a, b, a2, b2;
+		
+		let a = 0;
+		let b = 0;
+		let dx = x2 - x1;
+		let dy = y2 - y1;
+		let adyMinusbdx = 0;
+		
+		//Horizontal line
+		if(dy = 0) {
+
+			if(dx > 0) {
+
+				while(((a < dx) | (a = dx))) {
+					do Screen.drawPixel(x1 + a, y1);
+					let a = a + 1;
+				}
+
+				return;
+			} else {
+
+				while( ((a > dx) | (a = dx)) ) {
+					do Screen.drawPixel(x1 + a, y1);
+					let a = a - 1;
+				}
+
+				return;
+			}
+		}
+		
+		//Vertical line
+		if(dx = 0) {
+			if(dy > 0) {
+
+				while(((b < dy) | (b = dy))) {
+					do Screen.drawPixel(x1, y1 + b);
+					let b = b + 1;
+				}
+
+				return;
+			} else {
+
+				while(((b > dy) | (b = dy))) {
+					do Screen.drawPixel(x1, y1 + b);
+					let b = b - 1;
+				}
+
+				return;
+			}
+		}
+		
+		//If dy is greater then zero
+		if((dx > 0) & (dy > 0)) {
+
+			while(((a < dx) | (a = dx)) & ((b < dy) | (b = dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				if(adyMinusbdx < 0) {
+					let a = a + 1;
+					let adyMinusbdx = adyMinusbdx + dy;
+				} else {
+					let b = b + 1;
+					let adyMinusbdx = adyMinusbdx - dx;
+				}
+			}
+		}
+		
+		//If dy is less then zero
+		if((dx < 0) & (dy < 0)) {
+
+			while(((a > dx) | (a = dx)) & ((b > dy) | (b = dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				if(adyMinusbdx > 0) {
+					let a = a - 1;
+					let adyMinusbdx = adyMinusbdx + dy;
+				} else {
+					let b = b - 1;
+					let adyMinusbdx = adyMinusbdx - dx;
+				}
+			}
+		}
+		
+		//If dx is greater then zero and dy is less then zero
+		if((dx > 0) & (dy < 0)) {
+
+			while(((a < dx) | (a = dx)) & ((b > dy) | (b = dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				if(adyMinusbdx < 0) {
+					let a = a + 1;
+
+                    //Change to negative as dy is less than zero
+					let adyMinusbdx = adyMinusbdx - dy;
+				} else {
+					let b = b - 1;
+					let adyMinusbdx = adyMinusbdx - dx;
+				}
+			}
+		}
+		
+        //If dx is less then zero and dy is greater then zero
+		if((dx < 0) & (dy > 0)) {
+
+			while(((a > dx) | (a = dx)) & ((b < dy) | (b = dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				if(adyMinusbdx < 0) {
+					let a = a - 1;
+
+                    //Change to positive as dy is greater than zero
+					let adyMinusbdx = adyMinusbdx + dy;
+				} else {
+					let b = b + 1;
+					let adyMinusbdx = adyMinusbdx + dx;
+				}
+			}
+		}
+		
+		return;
+    }
+
+    /** Draws a filled rectangle where the top left corner
+     *  is (x1, y1) and the bottom right corner is (x2, y2). */
+    function void drawRectangle(int x1, int y1, int x2, int y2) {
+		var int count, total;
+		
+		let count = y1;
+		let total = y2 + 1;
+
+		while(count < total) {
+			do Screen.drawLine(x1, count, x2, count);
+			let count = count + 1;
+		}
+		
+		return;
+    }
+
+    /** Draws a filled circle of radius r around (cx, cy). */
+    function void drawCircle(int cx, int cy, int r) {
+		var int dy, count, sqrt;
+		
+		let dy = -r;
+		let count = r + 1;
+		
+		while(dy < count) {
+			let sqrt = Math.sqrt((r*r) - (dy*dy));
+
+			do Screen.drawLine(cx - sqrt, cy + dy, cx + sqrt, cy + dy);
+			let dy = dy + 1;
+		}
+		
+		return;
+    }
+}

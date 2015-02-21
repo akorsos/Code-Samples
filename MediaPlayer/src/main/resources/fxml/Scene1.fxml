@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.media.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uchicago.akorsos.FXMLController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="350.0">
+         <children>
+            <HBox prefHeight="24.0" prefWidth="350.0">
+               <children>
+                  <Label fx:id="progressTimeLabel" text="0s" />
+                  <Label fx:id="songTitleLabel" text="HonestY">
+                     <padding>
+                        <Insets left="25.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox spacing="5.0" VBox.vgrow="NEVER">
+               <children>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="350.0" VBox.vgrow="NEVER">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#previousSong" text="&lt;&lt;" />
+                        <Button mnemonicParsing="false" onAction="#playSong" text="Play" />
+                        <Button mnemonicParsing="false" onAction="#pauseSong" text="Pause" />
+                        <Button mnemonicParsing="false" onAction="#stopSong" text="Stop" />
+                        <Button mnemonicParsing="false" onAction="#nextSong" text="&gt;&gt;" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxWidth="1.7976931348623157E308" minHeight="24.0" prefHeight="24.0" prefWidth="350.0">
+                     <children>
+                        <Label text="Vol" />
+                        <Slider fx:id="volumeSlider" max="1.0" maxWidth="1.7976931348623157E308" value="0.5" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <ListView fx:id="musicList" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="391.0" prefWidth="350.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

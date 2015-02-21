@@ -1,0 +1,98 @@
+
+/**
+ * Memory operations library.
+ */ 
+class Memory {
+	
+	static Array memory, freeList;
+	
+    /** Initializes memory parameters. */
+    function void init() {
+
+		let memory = 0;
+        //Heap base
+		let freeList = 2048;
+        //16384 - 2048
+        let freeList[0] = 14334;
+        //Originally was set to null but that became dangerous
+        let freeList[1] = 0;
+
+		return;
+    }
+
+    /** Returns the value of the main memory at the given address. */
+    function int peek(int address) {
+		return memory[address];
+    }
+
+    /** Sets the value of the main memory at this address
+     *  to the given value. */
+    function void poke(int address, int value) {
+		let memory[address] = value;
+
+		return;
+    }
+
+    /** finds and allocates from the heap a memory block of the 
+     *  specified size and returns a reference to its base address. */
+    function int alloc(int size) {
+		var Array block, segmentP, segmentC, segmentN;
+		var boolean isSegment;
+        var int r;
+
+		let isSegment = false;
+		let segmentP = 0;
+		let segmentC = freeList;
+		let segmentN = segmentC[1];
+		
+		// Searches freelist for segment
+		while((~(segmentC = 0) & (~isSegment))) {
+			if(segmentC[0] > size) {
+				let isSegment = true;
+
+			} else {
+				let segmentP = segmentC;
+				let segmentC = segmentC[1];
+
+                if(segmentC = 0) {
+					let segmentN = 0;
+				} else {
+					let segmentN = segmentC[1];
+				}
+			}
+		}
+		
+		let r = segmentC[0] - (size + 1);
+
+		if(r = 0) {
+			//Set previous segment to next
+			let segmentP[1] = segmentN;
+		} else {
+			let block = segmentC + r;
+			let block[0] = size + 1;
+			let block = block + 1;
+			let segmentC[0] = r;
+		}
+		
+		return block;
+    }
+
+    /** De-allocates the given object and frees its space. */
+    function void deAlloc(int object) {
+		var Array segment, i;
+
+		let segment = object - 1;
+		let segment[0] = object[-1];
+		
+		let i = freeList;
+
+		//Last element in i
+		while( ~(i[1] = 0) ) {
+			let i = i[1];
+		}
+		
+		let i[1] = segment;
+		
+		return;
+    }    
+}

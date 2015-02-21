@@ -1,0 +1,57 @@
+
+/**
+ * A library of basic system services.
+ */
+class Sys {
+
+    /** Performs all the initializations required by the OS. */
+    function void init() {
+        //Have to initialize Memory first
+		do Memory.init();
+		do Math.init();
+		do Output.init();
+		do Screen.init();
+		do Keyboard.init();
+		do Main.main();
+		do Sys.halt();
+
+		return;
+    }
+
+    /** Halts execution. */
+    function void halt() {
+		while(true) {
+            //Do nothing, hang
+		}
+
+		return;
+    }
+
+    /** Waits approximately duration milliseconds and then returns. */
+    function void wait(int duration) {
+		var int count, i;
+
+		let i = 0;
+
+        while(i < 200) {
+			let count = 0;
+
+            while(count < duration) {
+				let count = count + 1;
+			}
+
+			let i = i + 1;
+		}
+		
+		return;
+    }
+
+    /** Prints the given error code in the form "ERR<errorCode>", and halts. */
+    function void error(int errorCode) {
+        do Output.printString("Err");
+        do Output.printInt(errorCode);
+        do Sys.halt();
+
+        return;
+    }
+}

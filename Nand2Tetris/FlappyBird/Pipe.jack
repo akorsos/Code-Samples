@@ -1,0 +1,124 @@
+class Pipe{
+    field int x;
+    field int width;
+    field int gapY, gapHeight;
+    field boolean wasPassed;
+    static Array gaps;
+    static int gapLength;
+    static int gapIndex;
+
+    function void initializeGaps(){
+        let gapIndex = 0;
+        let gapLength = 10;
+        let gaps = Array.new(gapLength);
+        let gaps[0] = 88;
+        let gaps[1] = 137;
+        let gaps[2] = 62;
+        let gaps[3] = 27;
+        let gaps[4] = 105;
+        let gaps[5] = 75;
+        let gaps[6] = 26;
+        let gaps[7] = 103;
+        let gaps[8] = 36;
+        let gaps[9] = 34;
+        return;
+    }
+
+    function void disposeGaps(){
+        do Array.dispose(gaps);
+        return;
+    }
+
+    function int nextGap(){
+        var int gap;
+        let gap = gaps[gapIndex];
+        let gapIndex = gapIndex + 1;
+
+        if(gapIndex > (gapLength -1)){
+            let gapIndex = 0;
+        }
+        return gap;
+    }
+
+    constructor Pipe.new(){
+        do reset();
+        return this;
+    }
+
+    method void dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void erase(){
+        do Screen.drawRectangle(x, 0, x+20, 255);
+        return;
+    }
+
+    method void shift(int distance){
+        let x = x-distance;
+        return;
+    }
+
+    method boolean isVisbible(){
+        return x > -1;
+    }
+
+    method void reset(){
+        let width = 20;
+        let x = 511 - width;
+        let gapY = Pipe.nextGap();
+        let gapHeight = 50;
+        let was Passed = false;
+        return;
+    }
+
+    method void draw(){
+        do Screen.drawRectangle(x, 0, x+20, gapY);
+        do Screen.drawRectangle(x, gapY+gapHeight, x+20, 255);
+        return;
+    }
+
+    method boolean collidesWith(Bird bird){
+        var boolean isCollision;
+        var int birdX, birdY, birdSize;
+        var int birdRight;
+
+        let birdX = bird.getX();
+        let birdY = bird.getY();
+        let birdSize = bird.getSize();
+        let birdRight = birdX + birdSize;
+        let isCollision = false;
+
+        if((birdRight > x) & (birdRight < (x + width))) {
+            if(((birdY - birdSize) < gapY) | ((birdY + birdsize) > (gapY + gapHeight))){
+                let isCollision = true;
+            }
+        }
+        return isCollision;
+    }
+
+    method boolean wasJustPassedBy(Bird bird){
+        if(wasPassed){
+            return false;
+        }
+
+        if((bird.getX() - bird.getSize()) > (x + width){
+            let wasPassed = true;
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+}

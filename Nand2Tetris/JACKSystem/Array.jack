@@ -1,0 +1,17 @@
+
+class Array {
+
+    static int mem;
+
+    /** Constructs a new Array of the given size. */
+    function Array new(int size) {
+        let mem = Memory.alloc(size);
+        return mem;
+    }
+
+    /** De-allocates the array and frees its space. */
+    method void dispose() {
+        do Memory.deAlloc(mem);
+        return;
+    }
+}

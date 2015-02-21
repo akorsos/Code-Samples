@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.uchicago.akorsos.FXMLController">
+   <children>
+      <HBox prefHeight="400.0" prefWidth="1300.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="buttonPlayDeckA" mnemonicParsing="false" onAction="#playSongDeckA" text="Play" />
+                        <Button mnemonicParsing="false" onAction="#pauseSongDeckA" text="Pause" />
+                        <Button mnemonicParsing="false" onAction="#stopSongDeckA" text="Stop" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="labelPlayTimeDeckA" text="00:00" />
+                        <Slider fx:id="sliderProgressDeckA" max="1.0" HBox.hgrow="ALWAYS" />
+                        <Label fx:id="labelDurationDeckA" text="00:00" />
+                     </children>
+                  </HBox>
+                  <ImageView fx:id="imageViewDeckA" fitHeight="150.0" fitWidth="420.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="40.0" />
+                     </VBox.margin>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="300.0">
+               <children>
+                  <Slider fx:id="sliderCrossfader" max="1.0" value="0.5" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="500.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#playSongDeckB" text="Play" />
+                        <Button mnemonicParsing="false" onAction="#pauseSongDeckB" text="Pause" />
+                        <Button mnemonicParsing="false" onAction="#stopSongDeckB" text="Stop" />
+                     </children>
+                  </HBox>
+                  <Slider fx:id="sliderProgressDeckaB" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

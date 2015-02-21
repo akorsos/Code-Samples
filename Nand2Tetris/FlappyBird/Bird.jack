@@ -1,0 +1,78 @@
+class Bird {
+    field int size;
+    field int x, y;
+    field int velocity, speed;
+    field int gravity, termainalVelocity;
+    field int flapStrenght;
+
+    constructor Bird new(int initialX, int initialY) {
+        let size = 10;
+        let x = initialX;
+        let y = intialY;
+        let velocity = 0;
+        let flapStrength = -10;
+        let termainalVelocity = 10;
+        let gravity = 1;
+        let speed = 20;
+
+        return this;
+    }
+
+    method int getX(){
+        return x;
+    }
+
+    method int getY(){
+        return y;
+    }
+
+    method int getSize(){
+        return size;
+    }
+
+    method int getSpeed(){
+        return speed;
+    }
+
+    method flap(){
+        let velocity = flapStrength;
+        return;
+    }
+
+    method void fall(){
+        let velocity = velocity + gravity;
+
+        if(velocity > terminalVelocity){
+            let velocity = terminalVelocity;
+        }
+        return;
+    }
+
+    method void updateAltitude(){
+        let y = y+velocity;
+        return;
+    }
+
+    method boolean isVisible(){
+        return y - size > 0;
+    }
+
+    method boolean higherThan(int altitude){
+        return y + size < altitude;
+    }
+
+    method void placeOn(int altitude){
+        let y = altitude - size;
+        return;
+    }
+
+    method draw(){
+        do Screen.drawCircle(x, y, size);
+        return;
+    }
+
+    method dispose(){
+        do Memory.deAlloc(this);
+        return;
+    }
+}

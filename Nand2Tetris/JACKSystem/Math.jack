@@ -1,0 +1,193 @@
+
+/**
+ * A basic math library.
+ */
+class Math {
+
+	static Array powTwo;
+
+    /** Initializes the library. */
+    function void init() {
+		let powTwo = Array.new(16);
+		
+		//Faster and more efficient to hardcode the values
+		let powTwo[0] = 1;
+		let powTwo[1] = 2;
+		let powTwo[2] = 4;
+		let powTwo[3] = 8;
+		let powTwo[4] = 16;
+		let powTwo[5] = 32;
+		let powTwo[6] = 64;
+		let powTwo[7] = 128;
+		let powTwo[8] = 256;
+		let powTwo[9] = 512;
+		let powTwo[10] = 1024;
+		let powTwo[11] = 2048;
+		let powTwo[12] = 4096;
+		let powTwo[13] = 8192;
+		let powTwo[14] = 16384;
+		let powTwo[15] = 32767;
+        //Above should be 32768 but that number is too big
+
+		return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+		if(x < 0) {
+			return -x;
+        } else {
+            return x;
+        }
+    }
+
+    /** Returns the product of x and y. */
+    function int multiply(int x, int y) {
+		var int sum, x2, y2, n;
+
+        //Quickly handles zero multiplication
+		if((x=0) | (y=0)) {
+			return 0;
+		}
+		
+		let sum = 0;
+        let n = 0;
+		let x2 = Math.abs(x);
+		let y2 = Math.abs(y);
+
+        //Because Hack is 16-bit
+		while(n < 15) {
+			if(Math.bit(y2,n) = true) {
+				let sum = sum + x2;
+			}
+
+			let x2 = x2 + x2; //x2 * 2
+			let n = n + 1;
+		}
+		
+		//Handles a negative
+		if((x<0 & y>0) | (x>0 & y<0)) {
+			let sum = -sum;
+		}
+		
+		return sum;
+    }
+
+    /** Returns the integer part of x/y. */
+    function int divide(int x, int y) {
+		var int q, factor;
+		var boolean isNegative;
+		
+		let isNegative = false;
+		let factor = 2;
+
+		//Checks for a negative
+		if((x<0 & y>0) | (x>0 & y<0)) {
+			let isNegative = true;
+		}
+		
+		let x = Math.abs(x);
+		let y = Math.abs(y);
+
+        //Handles a denominator large then its numerator
+		if(y > x) {
+			return 0;
+		}
+	
+		let q = Math.divide(x, 2*y);
+		
+		//Handles any overflow
+		if(((y > 0) & (2*y < 0))) {
+			let factor = 1;
+		}
+		
+		if((x - (factor*q*y) < y)) {
+
+            if(isNegative) {
+				return -(2*q);
+			} else {
+				return 2*q;
+			}
+		} else {
+
+			if(isNegative) {
+				return -((2*q)+1);
+			} else {
+				return ((2*q)+1);
+			}
+		}
+    }
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+		var int y, n, tempA, tempB;
+
+		let y = 0;
+		let n = 7;
+		
+		while((n > 0) | (n=0)) {
+			let tempA = y + powTwo[n];
+			let tempB = tempA * tempA;
+
+            if(((tempB < x) | (tempB = x)) & (tempB > 0)) {
+				let y = tempA;
+			}
+
+            let n = n - 1;
+		}
+		
+		return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+		if(a > b) {
+			return a;
+		} else {
+
+            if(a < b) {
+				return b;
+			}
+		}
+		
+		return a;
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+		if(a < b) {
+			return a;
+		} else {
+
+                if(a > b) {
+				return b;
+			}
+		}
+		
+		return a;
+    }
+	
+	/** Returns true if the jth bit of integer x is 1 and false otherwise */
+	function boolean bit(int x, int j) {
+		var int temp, ctr, powTwoVal;
+		var boolean isOne;
+
+        //Because Hack is 16-bit
+		let ctr = 15;
+        let temp = x;
+
+		while((ctr > j) | (ctr = j)) {
+			let isOne = false;
+			let powTwoVal = powTwo[ctr];
+
+			if((powTwoVal < temp) | (powTwoVal = temp)) {
+				let isOne = true;
+				let temp = temp - powTwoVal;
+			}
+
+			let ctr = ctr - 1;
+		}
+		
+		return isOne;
+	}
+}
