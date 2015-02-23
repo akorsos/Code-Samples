@@ -45,6 +45,9 @@ Webserver connection using a socket between a client and server.
 ### TicTacToe -- Objective-C ###
 Two player Tic Tac Toe game created for the iPhone.
 
+### TwitterRecreation -- PHP, HTML###
+Recreation of Twitter using MySQL. Can be found at: http://cgi-cspp.cs.uchicago.edu/~akorsos/cs53001/final.html
+
 ### UNIX -- C ###
 Assignments from a Unix Systems Programming course.
 stat command, cp command, message queue, shared memory, named pipe, unnamed pipe.
