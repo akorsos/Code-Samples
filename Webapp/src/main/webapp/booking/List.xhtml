@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListBookingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListBookingEmpty}" rendered="#{bookingController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{bookingController.items.rowCount > 0}">
+                    <h:outputText value="#{bookingController.pagination.pageFirstItem + 1}..#{bookingController.pagination.pageLastItem + 1}/#{bookingController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{bookingController.previous}" value="#{bundle.Previous} #{bookingController.pagination.pageSize}" rendered="#{bookingController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{bookingController.next}" value="#{bundle.Next} #{bookingController.pagination.pageSize}" rendered="#{bookingController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{bookingController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_firstname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.firstname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_lastname}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.lastname}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_email}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.email}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_timeofday}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.timeofday}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_checkindate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.checkindate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_checkoutdate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.checkoutdate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_typeofcar}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typeofcar}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_numberofadults}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numberofadults}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListBookingTitle_numberofchildren}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numberofchildren}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{bookingController.prepareView}" value="#{bundle.ListBookingViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bookingController.prepareEdit}" value="#{bundle.ListBookingEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{bookingController.destroy}" value="#{bundle.ListBookingDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{bookingController.prepareCreate}" value="#{bundle.ListBookingCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListBookingIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

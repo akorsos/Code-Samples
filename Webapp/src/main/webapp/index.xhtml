@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:body>
+        <ui:composition template="template.xhtml">
+            <ui:define name="header">
+                <header>
+                    <div class="menu_block ">
+                        <div class="container_12">
+                            <div class="grid_12">
+                                <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                                    <ul class="sf-menu">
+                                        <li class="current"><a href="#">Home</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Cars</a></li>
+                                        <li><a href="#">Services</a></li>
+                                        <li><a href="#">Contacts</a></li>
+                                    </ul>
+                                </nav>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="container_12">
+                        <div class="grid_12">
+                            <h1>
+                                <a href="#">
+                                    <img src="resources/images/logo.png" alt="Your Happy Family"/>
+                                </a>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </header>
+
+            </ui:define>
+
+            <ui:define name="content">
+                <div class="slider_wrapper ">
+                    <div id="camera_wrap" class="">
+                        <div data-src="resources/images/slide.jpg" ></div>
+                        <div data-src="resources/images/slide1.jpg" ></div>
+                        <div data-src="resources/images/slide2.jpg"></div>
+                    </div>
+                </div>
+                <div class="container_12">
+                    <div class="grid_4">
+                        <div class="banner">
+                            <div class="maxheight">
+                                <div class="banner_title">
+                                    <img src="resources/images/icon1.png" alt=""/>
+                                    <div class="extra_wrapper">Fast&amp;
+                                        <div class="color1">Safe</div>
+                                    </div>
+                                </div>
+                                Dorem ipsum dolor sit amet, consectetur adipiscinger elit. In mollis erat mattis neque facilisis, sit ameter ultricies erat rutrum. Cras facilisis, nulla vel viver auctor, leo magna sodales felis, quis malesuad
+                                <a href="#" class="fa fa-share-square"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="banner">
+                            <div class="maxheight">
+                                <div class="banner_title">
+                                    <img src="resources/images/icon2.png" alt=""/>
+                                    <div class="extra_wrapper">Best
+                                        <div class="color1">Prices</div>
+                                    </div>
+                                </div>
+                                Hem ipsum dolor sit amet, consectetur adipiscinger elit. In mollis erat mattis neque facilisis, sit ameter ultricies erat rutrum. Cras facilisis, nulla vel viver auctor, leo magna sodales felis, quis malesuader
+                                <a href="#" class="fa fa-share-square"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid_4">
+                        <div class="banner">
+                            <div class="maxheight">
+                                <div class="banner_title">
+                                    <img src="resources/images/icon3.png" alt=""/>
+                                    <div class="extra_wrapper">Package
+                                        <div class="color1">Delivery</div>
+                                    </div>
+                                </div>
+                                Kurem ipsum dolor sit amet, consectetur adipiscinger elit. In mollis erat mattis neque facilisis, sit ameter ultricies erat rutrum. Cras facilisis, nulla vel viver auctor, leo magna sodales felis, quis malesuki
+                                <a href="#" class="fa fa-share-square"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="c_phone">
+                    <div class="container_12">
+                        <div class="grid_12">
+                            <div class="fa fa-phone"></div>+ 1800 559 6580
+                            <span>ORDER NOW!</span>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </ui:define>
+
+            <ui:define name="booking">
+                <div class="content"><div class="ic">More Website Templates @ TemplateMonster.com - April 07, 2014!</div>
+                    <div class="container_12">
+                        <div class="grid_5">
+                            <h:form id="bookingForm">
+                                <div class="fl1">
+                                    <p:wizard id="wizard" styleClass="booking-wizard">
+                                        <p:tab title="Booking" id="booking" >
+                                            <p:messages/>
+                                            <div class="button-group">
+                                                <h:outputLabel for="firstName" value="First Name" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="firstName" label="First Name" value="#{bookingController.selected.firstname}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="lastName" value="Last Name" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="lastName" label="Last Name" value="#{bookingController.selected.lastname}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="email" value="Email" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="email" label="Email" value="#{bookingController.selected.email}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <p:selectOneRadio id="timeOfDay" value="#{bookingController.selected.timeofday}" layout="custom">
+                                                    <f:selectItem itemLabel="Morning" itemValue="1" />
+                                                    <f:selectItem itemLabel="Afternoon" itemValue="2" />
+                                                    <f:selectItem itemLabel="Evening" itemValue="3" />
+                                                </p:selectOneRadio>
+                                                <h:outputLabel for="morning" value="Morning" styleClass="radio-label radio-label-first" />
+                                                <p:radioButton id="morning" for="timeOfDay" itemIndex="0" />
+                                                <h:outputLabel for="afternoon" value="Afternoon" styleClass="radio-label"/>
+                                                <p:radioButton id="afternoon" for="timeOfDay" itemIndex="1"/>
+                                                <h:outputLabel for="evening" value="Evening" styleClass="radio-label" />
+                                                <p:radioButton id="evening" for="timeOfDay" itemIndex="2"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="checkinDate" value="Checkin Date" styleClass="optionalLbl form-label"/>
+                                                <p:calendar id="checkinDate" value="#{bookingController.selected.checkindate}" showOn="button" navigator="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="checkoutDate" value="Checkout Date" styleClass="optionalLbl form-label"/>
+                                                <p:calendar id="checkoutDate" value="#{bookingController.selected.checkoutdate}" showOn="button" navigator="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <p:selectOneRadio id="typeOfCar" value="#{bookingController.selected.typeofcar}" layout="custom">
+                                                    <f:selectItem itemLabel="Economy" itemValue="1" />
+                                                    <f:selectItem itemLabel="Standard" itemValue="2" />
+                                                    <f:selectItem itemLabel="Lux" itemValue="3" />
+                                                </p:selectOneRadio>
+                                                <h:outputLabel for="economy" value="Economy" styleClass="radio-label radio-label-first" />
+                                                <p:radioButton id="economy" for="typeOfCar" itemIndex="0"/>
+                                                <h:outputLabel for="standard" value="Standard" styleClass="radio-label" />
+                                                <p:radioButton id="standard" for="typeOfCar" itemIndex="1"/>
+                                                <h:outputLabel for="lux" value="Lux" styleClass="radio-label"/>
+                                                <p:radioButton id="lux" for="typeOfCar" itemIndex="2"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <p:outputLabel for="numberOfAdults" value="Number of adults" styleClass="radio-label radio-label-first"/>
+                                                <p:spinner id="numberOfAdults" value="#{bookingController.selected.numberofadults}" />
+                                            </div>
+                                            <div class="button-group">
+                                                <p:outputLabel for="numberOfChildren" value="Number of children" styleClass="radio-label radio-label-first"/>
+                                                <p:spinner id="numberOfChildren" value="#{bookingController.selected.numberofchildren}" />
+                                            </div>
+                                        </p:tab>
+                                        <p:tab title="Payment" id="payment">
+                                            <p:messages/>
+                                            <div class="button-group">
+                                                <h:outputLabel for="creditcard" value="Creditcard" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="creditcard" label="Creditcard" value="#{paymentController.selected.creditcard}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="address1" value="Address 1" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="address1" label="Address 1" value="#{paymentController.selected.addressline1}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="address2" value="Address 2" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="address2" label="Address 2" value="#{paymentController.selected.addressline2}" />
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="city" value="City" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="city" label="City" value="#{paymentController.selected.city}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="state" value="State" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="state" label="State" value="#{paymentController.selected.state}" required="true"/>
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="zip" value="Zip" styleClass="requiredLbl form-label"/>
+                                                <h:inputText id="zip" label="Zip" value="#{paymentController.selected.zipcode}" required="true"/>
+                                            </div>
+                                        </p:tab>
+                                        <p:tab title="Submit" id="submit">
+                                            <p:messages/>
+                                            <div class="button-group">
+                                                <h:outputLabel for="message" value="Message" styleClass="requiredLbl form-label"/>
+                                                <p:inputTextarea id="message" value="#{submitController.selected.message}" />
+                                            </div>
+                                            <div class="button-group">
+                                                <h:outputLabel for="termsOfService" value="Agree to Terms of Service" styleClass="form-label" />
+                                                <h:selectBooleanCheckbox id="termsOfService" value="#{customer.termsOfService}" />
+                                            </div>
+                                            <h:outputLabel for="total" value="Total: " styleClass="form-label"/>
+                                            <h:outputText id="total" value="#{customer.total}"></h:outputText>
+                                                <div class="button-group">
+                                                <p:commandButton id="submitButton" value="Submit" actionListener="#{customerController.saveCustomer}" ajax="false"/>
+                                            </div>
+                                        </p:tab>
+                                    </p:wizard>                   
+                                </div>
+                            </h:form>
+                        </div>
+                        <div class="grid_6 prefix_1">
+                            <a href="#" class="type"><img src="resources/images/page1_img1.jpg" alt=""/><span class="type_caption">Economy</span></a>
+                            <a href="#" class="type"><img src="resources/images/page1_img2.jpg" alt=""/><span class="type_caption">Standard</span></a>
+                            <a href="#" class="type"><img src="resources/images/page1_img3.jpg" alt=""/><span class="type_caption">Lux</span></a>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </ui:define> 
+
+            <ui:define name="footer">
+                <footer>
+                    <div class="container_12">
+                        <div class="grid_12">
+                            <div class="f_phone"><span>Call Us:</span> + 1800 559 6580</div>
+                            <div class="socials">
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-google-plus"></a>
+                            </div>
+                            <div class="copy">
+                                <div class="st1">
+                                    <div class="brand">Tour<span class="color1">T</span>axi </div>
+                                    &copy; 2014	| <a href="#">Privacy Policy</a> </div> Website designed by <a href="http://www.templatemonster.com/" rel="nofollow">TemplateMonster.com</a>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </footer>
+            </ui:define>
+        </ui:composition>
+        <br />
+        <h:link outcome="/booking/List" value="Show All Booking Items"/>
+        <br />
+        <h:link outcome="/payment/List" value="Show All Payment Items"/>
+        <br />
+        <h:link outcome="/submit/List" value="Show All Submit Items"/>
+    </h:body>
+
+
+
+</html>

@@ -1,0 +1,101 @@
+/* 
+    Document   : custom
+    Created on : Oct 2, 2010, 10:31:39 AM
+    Author     : heffel
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+.requiredLbl{
+    background-image:url(../resources/images/required-field.png);
+    background-position:top right;
+    background-repeat:no-repeat;
+    padding-right:10px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+}
+
+.optionalLbl{
+    padding-right:10px;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+}
+
+.ui-wizard {
+  margin:10px !important;
+  padding-top:80px !important; 
+}
+
+footer {
+  display: block;
+  padding: 0px 0 60px;
+  font-size: 14px;
+  color: #aaa !important;
+  line-height: 18px;
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: #4a4a4a;
+}
+
+.slider_wrapper {
+  padding-top:20px; 
+}
+
+input[type=text] {
+   box-sizing: border-box;
+   border: 1px solid #f1f1f1;
+   color: #737272;
+   background: #f0f3f5;
+   width: 100%;
+   font: 14px/20px 'Open Sans', sans-serif;
+   height: 30px;
+}
+
+.button-group {
+  padding-top:20px;
+}
+
+.radio-label {
+  margin-left:20px;
+  margin-right:5px; 
+}
+
+.radio-label-first {
+  margin-left:0; 
+}
+
+.ui-messages-error, .ui-messages-error-summary {
+    font-size: 14px;
+  line-height: 18px;
+  font-family: helvetica-nueue, sans-serif;
+}
+
+span.ui-messages-error-icon {
+  display:none;
+}
+
+.ui-wizard-step-title {
+  background:0; 
+  moz-box-shadow: 0;
+  -webkit-box-shadow: 0;
+  box-shadow:0; 
+} 
+.ui-wizard-step-title.ui-state-default {
+  background-color: #f0f3f5;;
+  
+}
+.ui-wizard-step-title.ui-state-highlight {
+  background-color: #737272
+  
+}
+
+.ui-inputfield, ui-state-default, .ui-inputfield.ui-state-focus {
+  moz-box-shadow: inset 0 0 0 #8f8f8f;
+  -webkit-box-shadow: inset 0 0 0 #8f8f8f;  
+  box-shadow: inset 0 0 0 #8f8f8f;
+}
+
+

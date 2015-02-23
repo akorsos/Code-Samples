@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSubmitTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSubmitLabel_teamId}" for="teamId" />
+                    <h:inputText id="teamId" value="#{submitController.selected.teamId}" title="#{bundle.EditSubmitTitle_teamId}" required="true" requiredMessage="#{bundle.EditSubmitRequiredMessage_teamId}"/>
+                    <h:outputLabel value="#{bundle.EditSubmitLabel_message}" for="message" />
+                    <h:inputText id="message" value="#{submitController.selected.message}" title="#{bundle.EditSubmitTitle_message}" />
+                    <h:outputLabel value="#{bundle.EditSubmitLabel_total}" for="total" />
+                    <h:inputText id="total" value="#{submitController.selected.total}" title="#{bundle.EditSubmitTitle_total}" />
+                </h:panelGrid>
+                <h:commandLink action="#{submitController.update}" value="#{bundle.EditSubmitSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSubmitViewLink}"/>
+                <br />
+                <h:commandLink action="#{submitController.prepareList}" value="#{bundle.EditSubmitShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSubmitIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

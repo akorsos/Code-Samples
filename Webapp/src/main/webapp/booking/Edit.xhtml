@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditBookingTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditBookingLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{bookingController.selected.id}" title="#{bundle.EditBookingTitle_id}" required="true" requiredMessage="#{bundle.EditBookingRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditBookingLabel_firstname}" for="firstname" />
+                    <h:inputText id="firstname" value="#{bookingController.selected.firstname}" title="#{bundle.EditBookingTitle_firstname}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_lastname}" for="lastname" />
+                    <h:inputText id="lastname" value="#{bookingController.selected.lastname}" title="#{bundle.EditBookingTitle_lastname}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_email}" for="email" />
+                    <h:inputText id="email" value="#{bookingController.selected.email}" title="#{bundle.EditBookingTitle_email}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_timeofday}" for="timeofday" />
+                    <h:inputText id="timeofday" value="#{bookingController.selected.timeofday}" title="#{bundle.EditBookingTitle_timeofday}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_checkindate}" for="checkindate" />
+                    <h:inputText id="checkindate" value="#{bookingController.selected.checkindate}" title="#{bundle.EditBookingTitle_checkindate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBookingLabel_checkoutdate}" for="checkoutdate" />
+                    <h:inputText id="checkoutdate" value="#{bookingController.selected.checkoutdate}" title="#{bundle.EditBookingTitle_checkoutdate}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditBookingLabel_typeofcar}" for="typeofcar" />
+                    <h:inputText id="typeofcar" value="#{bookingController.selected.typeofcar}" title="#{bundle.EditBookingTitle_typeofcar}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_numberofadults}" for="numberofadults" />
+                    <h:inputText id="numberofadults" value="#{bookingController.selected.numberofadults}" title="#{bundle.EditBookingTitle_numberofadults}" />
+                    <h:outputLabel value="#{bundle.EditBookingLabel_numberofchildren}" for="numberofchildren" />
+                    <h:inputText id="numberofchildren" value="#{bookingController.selected.numberofchildren}" title="#{bundle.EditBookingTitle_numberofchildren}" />
+                </h:panelGrid>
+                <h:commandLink action="#{bookingController.update}" value="#{bundle.EditBookingSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditBookingViewLink}"/>
+                <br />
+                <h:commandLink action="#{bookingController.prepareList}" value="#{bundle.EditBookingShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditBookingIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

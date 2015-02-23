@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  
+  <h:head>
+    <h:outputStylesheet library="css" name="default.css"/>
+    <h:outputStylesheet library="css" name="cssLayout.css"/>
+    <h:outputStylesheet library="css" name="camera.css" />
+    <h:outputStylesheet library="css" name="owl.carousel.css" />
+    <h:outputStylesheet library="css" name="font-awesome.css" />
+    <h:outputStylesheet library="css" name="reset.css" />
+    <h:outputStylesheet library="css" name="skeleton.css" />
+    <h:outputStylesheet library="css" name="superfish.css" />
+    <h:outputStylesheet library="css" name="touchTouch.css" />
+    <h:outputStylesheet library="css" name="grid.css" />
+    <h:outputStylesheet library="css" name="custom.css"/>
+    <h:outputStylesheet library="css" name="style.css" />
+  </h:head>
+  <h:body>
+    <h:outputScript library="js" name="jquery-migrate-1.2.1.js"></h:outputScript>
+	<h:outputScript library="js" name="script.js"></h:outputScript>
+	<h:outputScript library="js" name="superfish.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.ui.totop.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.equalheights.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.mobilemenu.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.easing.1.3.js"></h:outputScript>
+	<h:outputScript library="js" name="owl.carousel.js"></h:outputScript>
+	<h:outputScript library="js" name="camera.js"></h:outputScript>
+    <h:outputScript>
+			$(document).ready(function(){
+				jQuery('#camera_wrap').camera({
+					loader: false,
+					pagination: false ,
+					minHeight: '444',
+					thumbnails: false,
+					height: '28.28125%',
+					caption: true,
+					navigation: true,
+					fx: 'mosaic'
+				});
+				$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+	</h:outputScript>
+    <div class="main">
+      <ui:insert name="header">Header</ui:insert>
+      <ui:insert name="content">Content</ui:insert>
+      <ui:insert name="booking">Booking</ui:insert>
+    </div>
+    <ui:insert name="footer">Footer</ui:insert>
+  </h:body>
+</html>
