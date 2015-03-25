@@ -50,7 +50,7 @@ Recreation of Twitter using MySQL. Can be found at: http://cgi-cspp.cs.uchicago.
 
 ### UNIX -- C ###
 Assignments from a Unix Systems Programming course.
-stat command, cp command, message queue, shared memory, named pipe, unnamed pipe.
+stat command, cp command, message queue, shared memory, named pipe, unnamed pipe, sockets, multithreading.
 
 ### Webapp -- Java, Javascript, HTML, CSS ###
 Fully functional car reservation website created using PrimeFaces.
