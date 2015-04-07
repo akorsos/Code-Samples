@@ -39,6 +39,9 @@ Given a pattern and string, determines if the given string matches the provided 
 Pdf search and downloader created with JavaFX.
 Hit and scrapes webpage search results on Google, Bing, etc.
 
+### PythonScraper -- Python ###
+Browser automation using Python and Selenium.
+
 ### Server/ClientSocket -- Java ###
 Webserver connection using a socket between a client and server.
 
@@ -54,7 +57,4 @@ stat command, cp command, message queue, shared memory, named pipe, unnamed pipe
 
 ### Webapp -- Java, Javascript, HTML, CSS ###
 Fully functional car reservation website created using PrimeFaces.
-
-### PythonScraper -- Python ###
-Browser automation using Python and Selenium
 
