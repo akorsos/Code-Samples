@@ -7,14 +7,14 @@ Good demonstration of MVC.
 ### Blackjack -- Java###
 Blackjack game created using Java's built in GUI.
 
-### Crawler --Java ###
+### Crawler -- Java ###
 Webcrawler that searches elements on a webpage and returns all links.
 
 ### DjMessageQueue -- Java ###
 Automated message queue system implemented using Apache Camel.
 Passes multiple messages through multiple queues based on individual message content.
 
-### MediaPlayer --Java ###
+### MediaPlayer -- Java ###
 Media player created using JavaFX, strongly resembles Windows Media Player.
 Features include:
 - Play/Pause Button
@@ -54,4 +54,7 @@ stat command, cp command, message queue, shared memory, named pipe, unnamed pipe
 
 ### Webapp -- Java, Javascript, HTML, CSS ###
 Fully functional car reservation website created using PrimeFaces.
+
+### PythonScraper -- Python ###
+Browser automation using Python and Selenium
 
