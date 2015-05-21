@@ -4,7 +4,7 @@
 Asteroids game from the 1980's with some modern improvements such as additional weapons and powerups. 
 Good demonstration of MVC.
 
-### Blackjack -- Java###
+### Blackjack -- Java ###
 Blackjack game created using Java's built in GUI.
 
 ### Crawler -- Java ###
@@ -13,6 +13,9 @@ Webcrawler that searches elements on a webpage and returns all links.
 ### DjMessageQueue -- Java ###
 Automated message queue system implemented using Apache Camel.
 Passes multiple messages through multiple queues based on individual message content.
+
+### Longest Word Made of Other Words -- C++ ###
+Given a dictionary, find the longest word made up of other words.
 
 ### MediaPlayer -- Java ###
 Media player created using JavaFX, strongly resembles Windows Media Player.
