@@ -15,6 +15,8 @@ public class Main {
         try{
             strURL = args[0];
 
+            //Purpose website hyperlinks iterate through A
+            
             URL u = new URL(strURL);
 
             //Create inputStream
